@@ -1,5 +1,7 @@
 package com.ecoinv.inventorymanagement;
 
+import com.ecoinv.inventorymanagement.model.InventoryItem;
+
 import java.util.List;
 
 public class InventoryManager {
@@ -26,14 +28,34 @@ public class InventoryManager {
     }
 
     // Method for automated reordering with supplier systems
-    public void automateReordering() {
-        // Identify items that need reordering
-        System.out.println("Automating reordering process...");
-        // Send orders to suppliers via their APIs or by generating purchase orders
-        // Consider implementing a confirmation and tracking system for orders
+    public void automateReordering(List<InventoryItem> currentInventory) {
+        for (InventoryItem item : currentInventory) {
+            // Check if the current stock is below the reorder threshold
+            if (item.getCurrentStock() < item.getThreshold()) {
+                int reorderQuantity = calculateReorderQuantity(item);
+
+                // Simulate placing an order with the supplier
+                placeOrderWithSupplier(item.getProductName(), reorderQuantity);
+
+                // Optionally, update the inventory item to reflect the placed order
+                // This might involve increasing the 'on order' stock level
+                item.increaseOnOrderStock(reorderQuantity);
+
+                System.out.println("Reordered " + reorderQuantity + " units of " + item.getProductName());
+            }
+        }
     }
 
-    // Additional methods can be defined here for tasks like:
-    // - Integrating with market APIs to fetch trend data
-    // - Communicating with machine learning services for demand forecasting
+    // Calculate the reorder quantity based on past sales data, minimum order quantities, etc.
+    private int calculateReorderQuantity(InventoryItem item) {
+        // Placeholder for actual calculation logic
+        // For simplicity, we're just returning the reorder quantity specified in the item
+        return item.getReorderQuantity();
+    }
+
+    // Simulate placing an order with the supplier
+    private void placeOrderWithSupplier(String productName, int quantity) {
+        // Placeholder for actual integration with supplier systems
+        // This could involve sending a REST API request, an email, etc.
+    }
 }

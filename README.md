@@ -27,3 +27,58 @@ Execute the main application class to start the system. It will automatically mo
 - **RESTful APIs**: For fetching real-time data from e-commerce platforms and interfacing with supplier systems.
 
 For comprehensive details on configuration and advanced functionalities, please refer to the project documentation.
+
+## Project Structure
+
+````
+e-inventory-manager/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── ecoinv/
+│   │   │           └── inventorymanagement/
+│   │   │               ├── dao/
+│   │   │               │   ├── ProductDAO.java
+│   │   │               │   └── impl/
+│   │   │               │       └── ProductDAOImpl.java
+│   │   │               │
+│   │   │               ├── model/
+│   │   │               │   └── Product.java
+│   │   │               │
+│   │   │               ├── service/
+│   │   │               │   └── ProductService.java
+│   │   │               │
+│   │   │               └── util/
+│   │   │                   └── DatabaseUtil.java
+│   │   │
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       └── ...
+│   │
+│   └── test/
+│       ├── java/
+│       │   └── com/
+│       │       └── ecoinv/
+│       │           └── inventorymanagement/
+│       │               └── dao/
+│       │                   └── ProductDAOTest.java
+│       │
+│       └── resources/
+│
+├── lib/
+│   └── (external libraries, if not using a build tool like Maven or Gradle)
+│
+├── build/
+│   └── (compiled output, temporary files)
+│
+├── target/ (or dist/)
+│   └── (final packaged application, like JARs or WARs)
+│
+├── docs/
+│   └── (project documentation)
+│
+└── README.md
+````
+
